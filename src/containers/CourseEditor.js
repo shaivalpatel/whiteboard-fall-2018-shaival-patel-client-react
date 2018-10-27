@@ -41,9 +41,18 @@ export default class CourseEditor extends Component {
     }
 
 render(){
-    return(<h1> hello{
-        console.log(this.state.courseId)
-        }</h1>
+
+        return( <div>
+            <div>
+                <CourseEditorNavbar title ={this.props.match.params.title}/>
+            </div>
+            <br/>
+            <div>
+                <ModuleList courseId={this.state.courseId}/>
+            </div>
+        </div>
+
+
     )
 }
 

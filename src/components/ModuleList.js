@@ -1,10 +1,33 @@
 import React from 'react'
 import ModuleListItem from "./ModuleListItem";
-import CourseServiceSingleton from "../services/CourseServiceSingleton";
+import ModuleService from "../services/ModuleService";
 
 export default class ModuleList extends React.Component {
     constructor(props) {
         super(props);
+        this.state={
+            courseId:'',
+            module:{title:''},
+            modules:[]
+        }
+
+
+        }
+
+        renderModules(modules){
+        this.setState({modules:module})
+        }
+
+        findAllModules(courseId){
+        ModuleService.findAllModules(courseId)
+
+
+        }
+
+
+
+    }
+/*
 
         this.state = {
             newModule:
@@ -116,4 +139,4 @@ export default class ModuleList extends React.Component {
             </h2>
         )
     }
-}
+}*/

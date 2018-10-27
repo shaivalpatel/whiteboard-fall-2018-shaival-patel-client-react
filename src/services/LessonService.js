@@ -1,4 +1,4 @@
-const API_URL='http://localhost:8080/api/user/uid/course/cid/module/mid/lesson/'
+const API_URL='https://polar-hollows-19156.herokuapp.com/api/user/uid/course/cid/module/mid/lesson/'
 
 
 export default class LessonService{
