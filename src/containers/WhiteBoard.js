@@ -110,17 +110,8 @@ export default class WhiteBoard extends Component {
                                    addCourse={this.addCourse}
                                    deleteCourse={this.deleteCourse}
                                    deleteModule={this.deleteModule}
-                                   courses={this.state.courses}/>}/>
-                        <Route
-                            exact
-                            render={(props) =>
-                                <CourseEditor
-                                    {...props}
-                                    deleteModule={this.deleteModule}
-                                    deleteTopic={this.deleteTopic}
-                                    deleteLesson={this.deleteLesson}
-                                    courses={this.state.courses}/>}*/}
-                            {/*path="/course/:courseId/edit"/>*/}
+                                   courses={this.state.courses}/>}/>*/}
+                        <Route path="/course/:courseId/edit" component={CourseEditor}/>
 
                     </div>
                 </Router>
