@@ -1,4 +1,4 @@
-const API_URL='http://localhost:8080/api/course/cid/module/mid/lesson'
+const API_URL='http://polar-hollows-19156.herokuapp.com/api/course/cid/module/mid/lesson'
 const API_URL1='http://localhost:8080/api/module/mid/lesson'
 
 
