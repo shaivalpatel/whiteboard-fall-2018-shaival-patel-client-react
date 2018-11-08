@@ -1,16 +1,22 @@
-const API_URL='https://polar-hollows-19156.herokuapp.com/api/user/uid/course/cid/module/'
+const API_URL='http://localhost:8080/api/course/cid/module'
 
 export default class ModuleService{
 
 
 
 
-   static  findAllModules (userId,courseId){
-        return fetch(API_URL.replace('cid',courseId).replace('uid',userId).then(response=> response.json()));
+   static  findAllModules (courseId){
+       console.log(courseId)
+        return fetch(API_URL.replace('cid',courseId),{
+            credentials:'include'
+            }
+        ).then(response=> response.json());
+
     }
 
-    static createModule(courseID,userId,module){
-       return fetch(API_URL.replace('cid',courseID).replace('uid',userId),{
+    static createModule(courseID,module){
+       return fetch(API_URL.replace('cid',courseID),{
+           credentials:'include',
            body:JSON.stringify(module),
            method:"POST",
            headers:{
@@ -20,8 +26,9 @@ export default class ModuleService{
     }
 
 
-    static editModule(moduleId,courseId,userId,module){
-       return fetch(API_URL.replace('cid',courseId).replace('uid',userId)+moduleId,{
+    static editModule(courseId,moduleId,module){
+       return fetch(API_URL.replace('cid',courseId)+"/"+moduleId,{
+           credentials:'include',
            body:JSON.stringify(module),
            method:'PUT',
            headers:{
@@ -30,8 +37,9 @@ export default class ModuleService{
        }).then(response=>response.json())
     }
 
-    static deleteModule(moduleId,courseId,userId){
-        return fetch(API_URL.replace('cid',courseId).replace('uid',userId)+moduleId,{
+    static deleteModule(courseId,moduleId){
+        return fetch(API_URL.replace('cid',courseId)+"/"+moduleId,{
+            credentials:'include',
             body:JSON.stringify(module),
             method:'DELETE',
             headers:{

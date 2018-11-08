@@ -1,4 +1,4 @@
-const API_URL='https://polar-hollows-19156.herokuapp.com/api/user/'
+const API_URL='http://localhost:8080/api/user/'
 
 
 
@@ -107,7 +107,9 @@ export default class CourseServiceSingleton {
     static findAllCourses = (userId) =>{
 
         console.log("in find service react")
-        return fetch(API_URL+userId+'/course').then(response=>response.json())
+        return fetch(API_URL+userId+'/course',{
+            credentials:'include',
+        }).then(response=>response.json())
         };
 
     static createCourse = (course,userId) =>{

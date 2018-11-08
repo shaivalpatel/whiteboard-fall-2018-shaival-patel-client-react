@@ -22,8 +22,11 @@ class CourseTable extends React.Component{
     }
     componentDidMount(){
 
-        return fetch('https://polar-hollows-19156.herokuapp.com/api/profile').then(response=>response.json()).then(user=>{
+        return fetch('http://localhost:8080/api/profile',{
+            credentials:'include'
+        }).then(response=>response.json()).then(user=>{
             this.setState({
+
                 userId:user.id,
                 user:user,
                 courses:user.courses
@@ -32,14 +35,12 @@ class CourseTable extends React.Component{
             console.log(this.state.courses)
             console.log(this.state.user)
         })
-
     }
 
     findAllCourses = () => {
-        console.log("in findcourses")
-        console.log(this.state.userId)
+
         CourseServiceSingleton.findAllCourses(this.state.userId).then(courses=>this.setState({courses:courses}))
-        console.log(this.state.courses)
+
     }
 
     deleteCourse = (courseId,id) =>{

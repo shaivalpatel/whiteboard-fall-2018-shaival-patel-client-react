@@ -1,10 +1,13 @@
-const API_URL='https://polar-hollows-19156.herokuapp.com/api/user/uid/course/cid/module/mid/lesson/'
+const API_URL='http://localhost:8080/api/course/cid/module/mid/lesson'
+const API_URL1='http://localhost:8080/api/module/mid/lesson'
 
 
 export default class LessonService{
-    static findAllLessons=(userId,courseId,moduleId)=>{
-        return fetch(API_URL.replace('uid',userId).replace('cid',courseId).replace('mid',moduleId))
-            .then(resposne=>respoinse.json())
+    static findAllLessons=(courseId,moduleId)=>{
+        return fetch(API_URL.replace('cid',courseId).replace('mid',moduleId),{
+            credentials:'include',
+        })
+            .then(response=>response.json())
     }
 
 
@@ -12,26 +15,27 @@ export default class LessonService{
         fetch(API_URL.replace('uid',userId).replace('cid',courseId).replace('mid',moduleId)+lessonId).then(response=>response.json())
     }
 
-    static updateLesson =(userId,courseId,moduleId,lessonId,lesson)=>{
-        fetch(API_URL.replace('uid',userId).replace('cid',courseId).replace('mid',moduleId)+lessonId,{
+    static updateLesson =(courseId,moduleId,lessonId,lesson)=>{
+        return fetch(API_URL.replace('cid',courseId).replace('mid',moduleId)+"/"+lessonId,{
+            credentials:'include',
             body:JSON.stringify(lesson),
             headers:{'content-type':'application/json'},
             method:"PUT"
-        }).then(resposne=>response.json())
+        }).then(response=>response.json())
     }
-    static deleteLesson= (userId,courseId,moduleId,lessonId)=>{
-        fetch(API_URL.replace('uid',userId).replace('cid',courseId).replace('mid',moduleId)+lessonId,{
-
+    static deleteLesson= (courseId,moduleId,lessonId)=>{
+        return fetch(API_URL.replace('cid',courseId).replace('mid',moduleId)+"/"+lessonId,{
+            credentials:'include',
             headers:{'content-type':'application/json'},
             method:"DELETE"
-        }).then(resposne=>response.json())
+        }).then(response=>response.json())
     }
 
-    static createLesson= (userId,courseId,moduleId,lessonId,lesson)=>{
-        fetch(API_URL.replace('uid',userId).replace('cid',courseId).replace('mid',moduleId)+lessonId,{
+    static createLesson= (courseId,moduleId,lesson)=>{
+        return fetch(API_URL.replace('cid',courseId).replace('mid',moduleId),{
+            credentials:'include',
             body:JSON.stringify(lesson),
             headers:{'content-type':'application/json'},
             method:"POST"
-        }).then(resposne=>response.json())
+        }).then(response=>response.json())}}
 
-}

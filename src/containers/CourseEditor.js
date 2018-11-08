@@ -17,7 +17,7 @@ const store = createStore(widgetReducer)
 export default class CourseEditor extends Component {
     constructor(props) {
         super(props);
-        this.state = {courseId: '',moduleId:''};
+        this.state = {courseId: '',moduleId:'',selectedModule: {}};
         this.selectCourse = this.selectCourse.bind(this);
     }
 
@@ -26,11 +26,17 @@ export default class CourseEditor extends Component {
     }
 
     selectCourse(courseId) {
+        console.log(courseId)
         this.setState({courseId: courseId});
 
 
     }
+    selectModule = module => {
+        this.setState({
+            selectedModule: module,
 
+        })
+    }
 
 
 
@@ -42,14 +48,24 @@ export default class CourseEditor extends Component {
 
 render(){
 
-        return( <div>
+        return(
             <div>
                 <CourseEditorNavbar title ={this.props.match.params.title}/>
-            </div>
-            <br/>
-            <div>
-                <ModuleList courseId={this.state.courseId}/>
-            </div>
+
+                <div className="row">
+                    <div className="col-4">
+                        <ModuleList selectModule={this.selectModule}
+                                    selectedModule={this.state.selectedModule}
+                                    courseId={this.state.courseId}/>
+                    </div>
+
+                </div>
+                <div className="col-8">
+
+
+                </div>
+
+
         </div>
 
 
