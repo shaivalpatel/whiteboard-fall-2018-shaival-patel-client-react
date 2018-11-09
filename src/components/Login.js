@@ -36,7 +36,7 @@ usernameChange= e =>{
                 method:'POST',
                 body: JSON.stringify({
                     "username":this.state.username,
-                    password:this.state.password
+                    "password":this.state.password
                 }),
                 headers:{
                     'Content-type':'application/json'
